@@ -1,0 +1,505 @@
+{
+  "pbtResults": {
+    "2.4 Write property test for error log truncation (Property 11)": {
+      "status": "passed",
+      "lastRunTimestamp": 1785024209181
+    },
+    "2.2 Write property tests for cache (Properties 9, 10)": {
+      "status": "passed",
+      "lastRunTimestamp": 1785024278714
+    },
+    "4.2 Write property test for search threshold routing (Property 2)": {
+      "status": "passed",
+      "lastRunTimestamp": 1785024457304
+    },
+    "4.5 Write property test for user input format detection (Property 5)": {
+      "status": "passed",
+      "lastRunTimestamp": 1785024481221
+    },
+    "6.4 Write property test for user embed completeness (Property 6)": {
+      "status": "passed",
+      "lastRunTimestamp": 1785024662194
+    },
+    "6.2 Write property tests for game embed (Properties 3, 4)": {
+      "status": "passed",
+      "lastRunTimestamp": 1785024726527
+    },
+    "7.2 Write property test for game name validation (Property 1)": {
+      "status": "passed",
+      "lastRunTimestamp": 1785024814698
+    },
+    "8.2 Write property tests for command registry (Properties 7, 8)": {
+      "status": "passed",
+      "lastRunTimestamp": 1785024962362
+    }
+  },
+  "executionHistory": {
+    "1.1 Create package.json, .env.example, and config module": [
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785022680693
+      },
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785022688411
+      },
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785022843020
+      }
+    ],
+    "1.2 Create custom error types and logger": [
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785022680786
+      },
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785022849187
+      },
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785022956651
+      }
+    ],
+    "2.1 Implement cache manager": [
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785022680808
+      },
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785022963793
+      },
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785024132027
+      }
+    ],
+    "2.2 Write property tests for cache (Properties 9, 10)": [
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785022680877
+      },
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785024139737
+      },
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785024292574
+      }
+    ],
+    "2.3 Implement Steam API client": [
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785022680922
+      },
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785022964379
+      },
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785024132604
+      }
+    ],
+    "2.4 Write property test for error log truncation (Property 11)": [
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785022680943
+      },
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785024140492
+      },
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785024293350
+      }
+    ],
+    "3. Checkpoint - Ensure infrastructure tests pass": [
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785022680961
+      },
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785025033593
+      },
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785025060062
+      }
+    ],
+    "4.1 Implement game search service": [
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785022680984
+      },
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785024141180
+      },
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785024294190
+      }
+    ],
+    "4.2 Write property test for search threshold routing (Property 2)": [
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785022681019
+      },
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785024387236
+      },
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785024493239
+      }
+    ],
+    "4.3 Implement game details service": [
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785022681046
+      },
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785024141895
+      },
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785024294875
+      }
+    ],
+    "4.4 Implement user resolve service": [
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785022681076
+      },
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785024142655
+      },
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785024295655
+      }
+    ],
+    "4.5 Write property test for user input format detection (Property 5)": [
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785022681094
+      },
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785024387898
+      },
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785024493972
+      }
+    ],
+    "4.6 Implement user profile service": [
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785022681113
+      },
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785024302395
+      },
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785024380013
+      }
+    ],
+    "5. Checkpoint - Ensure service layer tests pass": [
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785022681142
+      },
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785025067701
+      },
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785025121587
+      }
+    ],
+    "6.1 Implement game embed builder": [
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785022681167
+      },
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785024501778
+      },
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785024587871
+      }
+    ],
+    "6.2 Write property tests for game embed (Properties 3, 4)": [
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785022681186
+      },
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785024596287
+      },
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785024747540
+      }
+    ],
+    "6.3 Implement user embed builder": [
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785022681203
+      },
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785024502357
+      },
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785024588505
+      }
+    ],
+    "6.4 Write property test for user embed completeness (Property 6)": [
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785022681225
+      },
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785024597041
+      },
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785024748368
+      }
+    ],
+    "7.1 Implement /game command handler": [
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785022681245
+      },
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785024597719
+      },
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785024749120
+      }
+    ],
+    "7.2 Write property test for game name validation (Property 1)": [
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785022681267
+      },
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785024757639
+      },
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785024870402
+      }
+    ],
+    "7.3 Implement /steamuser command handler": [
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785022681288
+      },
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785024598463
+      },
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785024749989
+      }
+    ],
+    "8.1 Implement command registry": [
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785022681320
+      },
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785024758417
+      },
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785024869492
+      }
+    ],
+    "8.2 Write property tests for command registry (Properties 7, 8)": [
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785022681341
+      },
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785024880191
+      },
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785025024761
+      }
+    ],
+    "8.3 Implement bot entry point": [
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785022681361
+      },
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785024880869
+      },
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785025025571
+      }
+    ],
+    "9. Final checkpoint - Ensure all tests pass": [
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785022681380
+      },
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785025129867
+      },
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785025154738
+      }
+    ],
+    "1. Project scaffolding and configuration": [
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785022956687
+      }
+    ],
+    "2. Infrastructure layer": [
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785024293374
+      }
+    ],
+    "4. Service layer": [
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785024494007
+      }
+    ],
+    "6. Embed builders": [
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785024748392
+      }
+    ],
+    "7. Command handlers": [
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785024870428
+      }
+    ],
+    "8. Command registry and bot entry point": [
+      {
+        "executionId": "c97620a5-6aaa-4bf5-b3f8-5f47648a4977",
+        "chatSessionId": "sess_0833faeb-4fc7-4765-b6c9-63ec2df08b5b",
+        "timestamp": 1785025025621
+      }
+    ]
+  }
+}
