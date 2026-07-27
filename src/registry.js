@@ -9,7 +9,8 @@
 import { readdir } from 'node:fs/promises';
 import { pathToFileURL } from 'node:url';
 import { join, resolve } from 'node:path';
-import { REST, Routes } from '@discordjs/rest';
+import { REST } from '@discordjs/rest';
+import { Routes } from 'discord-api-types/v10';
 import { logger } from './utils/logger.js';
 
 /**
