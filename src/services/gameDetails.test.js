@@ -65,7 +65,7 @@ describe('GameDetailsService', () => {
       expect(client.getAppDetails).toHaveBeenCalledWith(
         730,
         'gb',
-        ['price_overview', 'short_description', 'header_image', 'genres', 'release_date', 'developers', 'publishers', 'metacritic']
+        ['basic', 'price_overview', 'short_description', 'header_image', 'genres', 'release_date', 'developers', 'publishers', 'metacritic']
       );
     });
 
