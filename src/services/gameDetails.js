@@ -7,6 +7,7 @@
 import { RegionUnavailableError } from '../utils/errors.js';
 
 const FILTERS = [
+  'basic',
   'price_overview',
   'short_description',
   'header_image',
