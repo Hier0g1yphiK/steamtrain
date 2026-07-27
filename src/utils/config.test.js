@@ -14,16 +14,19 @@ describe('config', () => {
 
   it('exports config with token and api key when both are set', async () => {
     process.env.DISCORD_TOKEN = 'test-token';
+    process.env.DISCORD_APPLICATION_ID = 'test-app-id';
     process.env.STEAM_API_KEY = 'test-key';
 
     const { config } = await import('./config.js');
 
     expect(config.discordToken).toBe('test-token');
+    expect(config.discordApplicationId).toBe('test-app-id');
     expect(config.steamApiKey).toBe('test-key');
   });
 
   it('exits with non-zero code when DISCORD_TOKEN is missing', async () => {
     process.env.DISCORD_TOKEN = '';
+    process.env.DISCORD_APPLICATION_ID = 'test-app-id';
     process.env.STEAM_API_KEY = 'test-key';
 
     const mockExit = vi.spyOn(process, 'exit').mockImplementation(() => {
@@ -44,6 +47,7 @@ describe('config', () => {
 
   it('exits with non-zero code when STEAM_API_KEY is missing', async () => {
     process.env.DISCORD_TOKEN = 'test-token';
+    process.env.DISCORD_APPLICATION_ID = 'test-app-id';
     process.env.STEAM_API_KEY = '';
 
     const mockExit = vi.spyOn(process, 'exit').mockImplementation(() => {

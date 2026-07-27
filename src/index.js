@@ -53,7 +53,7 @@ const commands = await loadCommands(commandsDir);
 
 await registerCommands(commands, {
   token: config.discordToken,
-  applicationId: process.env.DISCORD_APPLICATION_ID || '',
+  applicationId: config.discordApplicationId,
 });
 
 // --- Handler map ---
