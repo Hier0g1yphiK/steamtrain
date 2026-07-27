@@ -127,12 +127,17 @@ describe('registerSteamLinkListener', () => {
     });
   });
 
-  it('suppresses embeds on the original message', async () => {
+  it('suppresses embeds on the original message before replying', async () => {
     await messageHandler(mockMessage);
     expect(mockMessage.suppressEmbeds).toHaveBeenCalledWith(true);
+
+    // suppressEmbeds should be called before reply
+    const suppressOrder = mockMessage.suppressEmbeds.mock.invocationCallOrder[0];
+    const replyOrder = mockMessage.reply.mock.invocationCallOrder[0];
+    expect(suppressOrder).toBeLessThan(replyOrder);
   });
 
-  it('does not crash if suppressEmbeds fails (missing permission)', async () => {
+  it('still replies with embed if suppressEmbeds fails (missing permission)', async () => {
     mockMessage.suppressEmbeds.mockRejectedValue(new Error('Missing Permissions'));
     await messageHandler(mockMessage);
 

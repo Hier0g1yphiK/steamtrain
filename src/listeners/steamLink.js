@@ -49,19 +49,23 @@ export function registerSteamLinkListener(client, { gameDetailsService }) {
     // Limit to first 3 links per message to avoid spam
     const idsToProcess = appIds.slice(0, 3);
 
+    // Suppress the default link preview first, before sending our embed
+    try {
+      await message.suppressEmbeds(true);
+    } catch {
+      // Missing Manage Messages permission — continue without suppressing
+      logger.warn({
+        event: 'steam_link_listener',
+        message: 'Failed to suppress embeds — bot may lack Manage Messages permission',
+      });
+    }
+
     for (const appId of idsToProcess) {
       try {
         const details = await gameDetailsService.getDetails(appId);
         const embed = buildGameEmbed(details);
 
         await message.reply({ embeds: [embed], allowedMentions: { repliedUser: false } });
-
-        // Attempt to suppress the default link preview
-        try {
-          await message.suppressEmbeds(true);
-        } catch {
-          // Missing Manage Messages permission — silently continue
-        }
       } catch (error) {
         logger.warn({
           event: 'steam_link_listener',
