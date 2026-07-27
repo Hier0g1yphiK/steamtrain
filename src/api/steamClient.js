@@ -119,8 +119,8 @@ export class SteamClient {
 
   /**
    * Get the full Steam app list.
-   * No API key required.
-   * @returns {Promise<object>} App list
+   * Requires API key (uses IStoreService).
+   * @returns {Promise<object>} App list in the format { applist: { apps: [{ appid, name }] } }
    */
   async getAppList() {
     const cacheKey = 'appList';
@@ -129,12 +129,36 @@ export class SteamClient {
       return cached;
     }
 
-    const url = 'https://api.steampowered.com/ISteamApps/GetAppList/v2/';
-
-    let result;
+    let apps;
     try {
-      const response = await fetchWithTimeout(url);
-      result = await response.json();
+      apps = [];
+      let lastAppId = 0;
+      let hasMore = true;
+
+      while (hasMore) {
+        const params = new URLSearchParams({
+          key: this.apiKey,
+          max_results: '50000',
+        });
+        if (lastAppId > 0) {
+          params.set('last_appid', String(lastAppId));
+        }
+
+        const url = `https://api.steampowered.com/IStoreService/GetAppList/v1/?${params}`;
+        const response = await fetchWithTimeout(url);
+        const data = await response.json();
+
+        const pageApps = data?.response?.apps || [];
+        if (pageApps.length === 0) {
+          hasMore = false;
+        } else {
+          for (const app of pageApps) {
+            apps.push({ appid: app.appid, name: app.name });
+          }
+          lastAppId = pageApps[pageApps.length - 1].appid;
+          hasMore = data?.response?.have_more_results === true;
+        }
+      }
     } catch (err) {
       // Stale-while-revalidate
       const stale = this.cache.appListCache.get(cacheKey, { allowStale: true });
@@ -149,6 +173,7 @@ export class SteamClient {
       throw err;
     }
 
+    const result = { applist: { apps } };
     this.cache.appListCache.set(cacheKey, result);
     return result;
   }

@@ -255,18 +255,18 @@ describe('SteamClient', () => {
     });
 
     it('fetches and caches app list on miss', async () => {
-      const mockList = { applist: { apps: [{ appid: 1, name: 'Game' }] } };
+      const mockResponse = { response: { apps: [{ appid: 1, name: 'Game' }], have_more_results: false } };
       vi.stubGlobal('fetch', vi.fn(() =>
         Promise.resolve({
           ok: true,
           status: 200,
-          json: () => Promise.resolve(mockList),
+          json: () => Promise.resolve(mockResponse),
         })
       ));
 
       const result = await client.getAppList();
-      expect(result).toEqual(mockList);
-      expect(cache.appListCache.get('appList')).toEqual(mockList);
+      expect(result).toEqual({ applist: { apps: [{ appid: 1, name: 'Game' }] } });
+      expect(cache.appListCache.get('appList')).toEqual({ applist: { apps: [{ appid: 1, name: 'Game' }] } });
     });
 
     it('serves stale cache on fetch failure', async () => {
