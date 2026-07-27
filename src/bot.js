@@ -4,6 +4,7 @@
  */
 
 import { Client, GatewayIntentBits } from 'discord.js';
+import { registerSteamLinkListener } from './listeners/steamLink.js';
 import { logger } from './utils/logger.js';
 
 /**
@@ -16,7 +17,11 @@ import { logger } from './utils/logger.js';
  */
 export function createBot({ handlerMap, services }) {
   const client = new Client({
-    intents: [GatewayIntentBits.Guilds],
+    intents: [
+      GatewayIntentBits.Guilds,
+      GatewayIntentBits.GuildMessages,
+      GatewayIntentBits.MessageContent,
+    ],
   });
 
   client.on('interactionCreate', async (interaction) => {
@@ -58,6 +63,9 @@ export function createBot({ handlerMap, services }) {
       }
     }
   });
+
+  // Register the Steam link listener for auto-embed on store links
+  registerSteamLinkListener(client, services);
 
   return client;
 }

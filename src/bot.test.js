@@ -53,10 +53,14 @@ describe('createBot', () => {
     client = createBot({ handlerMap, services });
   });
 
-  it('creates a client with Guilds intent', async () => {
+  it('creates a client with required intents', async () => {
     const { Client, GatewayIntentBits } = await import('discord.js');
     expect(Client).toHaveBeenCalledWith({
-      intents: [GatewayIntentBits.Guilds],
+      intents: [
+        GatewayIntentBits.Guilds,
+        GatewayIntentBits.GuildMessages,
+        GatewayIntentBits.MessageContent,
+      ],
     });
   });
 
