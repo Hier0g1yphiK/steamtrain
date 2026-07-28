@@ -1,6 +1,6 @@
 /**
- * /game command handler
- * Searches for a game by name via IGDB and displays details as a rich embed.
+ * /steamgame command handler
+ * Searches for a Steam game by name and displays details as a rich embed.
  */
 
 import {
@@ -8,18 +8,21 @@ import {
   StringSelectMenuBuilder,
   ComponentType,
 } from 'discord.js';
-import { buildIgdbGameEmbed } from '../embeds/igdbGameEmbed.js';
+import { GameSearchService } from '../services/gameSearch.js';
+import { GameDetailsService } from '../services/gameDetails.js';
+import { buildGameEmbed } from '../embeds/gameEmbed.js';
 import { logger } from '../utils/logger.js';
 import {
   TimeoutError,
   ApiError,
   GameNotFoundError,
+  RegionUnavailableError,
   InvalidInputError,
 } from '../utils/errors.js';
 
 export const command = {
-  name: 'game',
-  description: 'Look up any game by name (powered by IGDB)',
+  name: 'steamgame',
+  description: 'Look up a Steam game by name via the Steam store',
   options: [
     {
       name: 'name',
@@ -74,6 +77,10 @@ export function mapErrorToUserMessage(error, searchTerm) {
     return `The request timed out while searching for "${searchTerm}". Please try again later.`;
   }
 
+  if (error instanceof RegionUnavailableError) {
+    return `The game is not available in the selected region. Please try a different game.`;
+  }
+
   if (error instanceof GameNotFoundError) {
     return `No game found matching "${searchTerm}". Please check the spelling and try again.`;
   }
@@ -83,7 +90,7 @@ export function mapErrorToUserMessage(error, searchTerm) {
   }
 
   if (error instanceof ApiError) {
-    return `IGDB is temporarily unavailable. Please try again later.`;
+    return `Steam is temporarily unavailable. Please try again later.`;
   }
 
   return `Something went wrong while searching for "${searchTerm}". Please try again later.`;
@@ -92,7 +99,7 @@ export function mapErrorToUserMessage(error, searchTerm) {
 /**
  * Executes the /game command.
  * @param {import('discord.js').ChatInputCommandInteraction} interaction
- * @param {{ igdbGameSearchService: object, igdbGameDetailsService: object }} deps
+ * @param {{ gameSearchService: GameSearchService, gameDetailsService: GameDetailsService }} deps
  */
 export async function execute(interaction, deps = {}) {
   await interaction.deferReply();
@@ -107,24 +114,28 @@ export async function execute(interaction, deps = {}) {
 
   const searchTerm = validation.trimmed;
 
-  const igdbGameSearchService = deps.igdbGameSearchService;
-  const igdbGameDetailsService = deps.igdbGameDetailsService;
+  // Allow dependency injection for testing, fall back to creating services
+  const gameSearchService = deps.gameSearchService;
+  const gameDetailsService = deps.gameDetailsService;
 
   try {
-    const { match, candidates } = await igdbGameSearchService.search(searchTerm);
+    const { match, candidates } = await gameSearchService.search(searchTerm);
 
     if (match) {
-      const details = await igdbGameDetailsService.getDetails(match.gameId);
-      const embed = buildIgdbGameEmbed(details);
+      // Single high-confidence match — fetch details and show embed
+      const details = await gameDetailsService.getDetails(match.appId);
+      const embed = buildGameEmbed(details);
       await interaction.editReply({ embeds: [embed] });
       return;
     }
 
     if (candidates.length > 0) {
-      await showSelectionMenu(interaction, candidates, igdbGameDetailsService);
+      // Multiple candidates — show selection menu
+      await showSelectionMenu(interaction, candidates, gameDetailsService);
       return;
     }
 
+    // No matches found
     await interaction.editReply({
       content: `No results found for "${searchTerm}". Please check the spelling and try again.`,
     });
@@ -132,7 +143,7 @@ export async function execute(interaction, deps = {}) {
     const message = mapErrorToUserMessage(error, searchTerm);
     await interaction.editReply({ content: message });
     logger.error({
-      command: 'game',
+      command: 'steamgame',
       input: searchTerm,
       error,
     });
@@ -142,17 +153,17 @@ export async function execute(interaction, deps = {}) {
 /**
  * Shows an interactive selection menu for multiple game candidates.
  * @param {import('discord.js').ChatInputCommandInteraction} interaction
- * @param {Array<{ gameId: number, name: string, similarity: number }>} candidates
- * @param {object} igdbGameDetailsService
+ * @param {Array<{ appId: number, name: string, similarity: number }>} candidates
+ * @param {GameDetailsService} gameDetailsService
  */
-async function showSelectionMenu(interaction, candidates, igdbGameDetailsService) {
+async function showSelectionMenu(interaction, candidates, gameDetailsService) {
   const selectMenu = new StringSelectMenuBuilder()
-    .setCustomId('igdb_game_select')
+    .setCustomId('game_select')
     .setPlaceholder('Select a game...')
     .addOptions(
       candidates.map((candidate) => ({
-        label: candidate.name.slice(0, 100),
-        value: String(candidate.gameId),
+        label: candidate.name.slice(0, 100), // Discord label max 100 chars
+        value: String(candidate.appId),
         description: `Match: ${candidate.similarity}%`,
       })),
     );
@@ -170,9 +181,9 @@ async function showSelectionMenu(interaction, candidates, igdbGameDetailsService
       time: 30_000,
     });
 
-    const selectedGameId = selection.values[0];
-    const details = await igdbGameDetailsService.getDetails(Number(selectedGameId));
-    const embed = buildIgdbGameEmbed(details);
+    const selectedAppId = selection.values[0];
+    const details = await gameDetailsService.getDetails(Number(selectedAppId));
+    const embed = buildGameEmbed(details);
 
     await selection.update({
       content: '',
@@ -180,6 +191,7 @@ async function showSelectionMenu(interaction, candidates, igdbGameDetailsService
       components: [],
     });
   } catch (error) {
+    // Timeout or other component interaction failure
     const disabledMenu = StringSelectMenuBuilder.from(selectMenu).setDisabled(true);
     const disabledRow = new ActionRowBuilder().addComponents(disabledMenu);
 

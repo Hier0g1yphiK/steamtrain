@@ -21,6 +21,13 @@ const userProfileCache = new LRUCache({
   allowStale: true,
 });
 
+// IGDB game cache: up to 500 entries, refreshed every hour
+const igdbCache = new LRUCache({
+  max: 500,
+  ttl: 60 * 60 * 1000, // 1 hour
+  allowStale: true,
+});
+
 export function getAppListCache() {
   return appListCache;
 }
@@ -31,4 +38,8 @@ export function getGameDetailCache() {
 
 export function getUserProfileCache() {
   return userProfileCache;
+}
+
+export function getIgdbCache() {
+  return igdbCache;
 }

@@ -3,7 +3,7 @@
  */
 
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { command, execute, validateGameName, mapErrorToUserMessage } from './game.js';
+import { command, execute, validateGameName, mapErrorToUserMessage } from './steamgame.js';
 import {
   TimeoutError,
   ApiError,
@@ -76,7 +76,7 @@ function createMockInteraction(nameValue) {
 
 describe('game command definition', () => {
   it('has the correct name', () => {
-    expect(command.name).toBe('game');
+    expect(command.name).toBe('steamgame');
   });
 
   it('has a description within 1-100 chars', () => {
@@ -304,7 +304,7 @@ describe('execute', () => {
 
     expect(logger.error).toHaveBeenCalledWith(
       expect.objectContaining({
-        command: 'game',
+        command: 'steamgame',
         input: 'Portal 2',
       }),
     );

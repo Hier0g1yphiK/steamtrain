@@ -1,7 +1,7 @@
 /**
  * Entry point: load environment, wire all layers together, and start the bot.
  *
- * Wiring order: config → cache → steamClient → services → commands → registry → bot
+ * Wiring order: config → cache → clients → services → commands → registry → bot
  */
 
 import { config } from './utils/config.js';
@@ -9,10 +9,14 @@ import {
   getAppListCache,
   getGameDetailCache,
   getUserProfileCache,
+  getIgdbCache,
 } from './cache/cacheManager.js';
 import { SteamClient } from './api/steamClient.js';
+import { IgdbClient } from './api/igdbClient.js';
 import { GameSearchService } from './services/gameSearch.js';
 import { GameDetailsService } from './services/gameDetails.js';
+import { IgdbGameSearchService } from './services/igdbGameSearch.js';
+import { IgdbGameDetailsService } from './services/igdbGameDetails.js';
 import { UserResolveService } from './services/userResolve.js';
 import { UserProfileService } from './services/userProfile.js';
 import { loadCommands, registerCommands, buildHandlerMap } from './registry.js';
@@ -29,20 +33,30 @@ const cache = {
   appListCache: getAppListCache(),
   gameDetailCache: getGameDetailCache(),
   userProfileCache: getUserProfileCache(),
+  igdbCache: getIgdbCache(),
 };
 
-// --- API client ---
+// --- API clients ---
 const steamClient = new SteamClient(config.steamApiKey, cache);
+const igdbClient = new IgdbClient({
+  clientId: config.twitchClientId,
+  clientSecret: config.twitchClientSecret,
+  cache,
+});
 
 // --- Service layer ---
 const gameSearchService = new GameSearchService(steamClient);
 const gameDetailsService = new GameDetailsService(steamClient);
+const igdbGameSearchService = new IgdbGameSearchService(igdbClient);
+const igdbGameDetailsService = new IgdbGameDetailsService(igdbClient);
 const userResolveService = new UserResolveService(steamClient);
 const userProfileService = new UserProfileService(steamClient);
 
 const services = {
   gameSearchService,
   gameDetailsService,
+  igdbGameSearchService,
+  igdbGameDetailsService,
   userResolveService,
   userProfileService,
 };

@@ -1,7 +1,7 @@
 // Feature: steam-discord-bot, Property 1: Game name validation boundary
 import { describe, it, expect } from 'vitest';
 import * as fc from 'fast-check';
-import { validateGameName } from './game.js';
+import { validateGameName } from './steamgame.js';
 
 /**
  * Validates: Requirements 1.1, 1.2
