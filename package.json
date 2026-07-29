@@ -9,14 +9,15 @@
     "test": "vitest --run"
   },
   "dependencies": {
-    "discord.js": "^14.16.3",
     "@discordjs/rest": "^2.4.0",
+    "better-sqlite3": "^11.7.0",
     "discord-api-types": "^0.37.100",
-    "lru-cache": "^11.0.2",
-    "dotenv": "^16.4.7"
+    "discord.js": "^14.16.3",
+    "dotenv": "^16.4.7",
+    "lru-cache": "^11.0.2"
   },
   "devDependencies": {
-    "vitest": "^2.1.8",
-    "fast-check": "^3.23.2"
+    "fast-check": "^3.23.2",
+    "vitest": "^2.1.8"
   }
 }

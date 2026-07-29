@@ -1,7 +1,7 @@
 /**
  * Entry point: load environment, wire all layers together, and start the bot.
  *
- * Wiring order: config → cache → clients → services → commands → registry → bot
+ * Wiring order: config → cache → clients → services → store → commands → registry → bot → sale checker
  */
 
 import { config } from './utils/config.js';
@@ -19,6 +19,8 @@ import { IgdbGameSearchService } from './services/igdbGameSearch.js';
 import { IgdbGameDetailsService } from './services/igdbGameDetails.js';
 import { UserResolveService } from './services/userResolve.js';
 import { UserProfileService } from './services/userProfile.js';
+import { SaleCheckerService } from './services/saleChecker.js';
+import { initDatabase, WatchlistStore } from './store/watchlistStore.js';
 import { loadCommands, registerCommands, buildHandlerMap } from './registry.js';
 import { createBot } from './bot.js';
 import { logger } from './utils/logger.js';
@@ -44,6 +46,10 @@ const igdbClient = new IgdbClient({
   cache,
 });
 
+// --- Store layer (SQLite persistence) ---
+const db = initDatabase();
+const watchlistStore = new WatchlistStore(db);
+
 // --- Service layer ---
 const gameSearchService = new GameSearchService(steamClient);
 const gameDetailsService = new GameDetailsService(steamClient);
@@ -59,6 +65,7 @@ const services = {
   igdbGameDetailsService,
   userResolveService,
   userProfileService,
+  watchlistStore,
 };
 
 // --- Command discovery and registration ---
@@ -78,6 +85,14 @@ const client = createBot({ handlerMap, services });
 
 client.once('ready', () => {
   logger.info({ message: `Bot logged in as ${client.user.tag}` });
+
+  // --- Sale checker (starts after bot is ready) ---
+  const saleChecker = new SaleCheckerService({
+    watchlistStore,
+    steamClient,
+    discordClient: client,
+  });
+  saleChecker.start();
 });
 
 await client.login(config.discordToken);

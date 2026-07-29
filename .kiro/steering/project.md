@@ -10,6 +10,7 @@ SteamTrain is a Discord bot for game lookup (via IGDB) and Steam user profiles v
 - **Discord:** discord.js v14, @discordjs/rest
 - **APIs:** IGDB API v4 (Twitch OAuth2), Steam Web API
 - **Cache:** lru-cache (in-memory LRU with TTL)
+- **Persistence:** better-sqlite3 (SQLite for watchlist data)
 - **Config:** dotenv
 - **Testing:** Vitest + fast-check (property-based testing)
 - **Module system:** ESM (`"type": "module"`)
@@ -25,18 +26,22 @@ SteamTrain is a Discord bot for game lookup (via IGDB) and Steam user profiles v
 
 ## Architecture Patterns
 
-- **Layered architecture:** Discord → Commands → Services → API Clients → Cache
+- **Layered architecture:** Discord → Commands → Services → API Clients → Cache/Store
 - **Multi-client design:** `SteamClient` for Steam API, `IgdbClient` for IGDB API (Twitch OAuth2)
 - **Deferred reply pattern:** Every command calls `deferReply()` before any async work
 - **Stale-while-revalidate:** Expired cache entries served on fetch failure
 - **Command registry:** Auto-discovers `.js` files in `src/commands/`, validates exports, registers with Discord REST
+- **Background services:** `SaleCheckerService` polls Steam prices on a 2-hour interval, sends notifications to configured channels
+- **SQLite persistence:** `WatchlistStore` uses `better-sqlite3` with WAL mode for watchlist data that survives restarts
 
 ## Commands
 
 - `/game` — Universal game lookup via IGDB (all platforms/stores)
 - `/steamgame` — Steam-specific game lookup with pricing
 - `/steamuser` — Steam profile lookup
+- `/watchlist` — Server-level sale watchlist (subcommands: add, remove, list, channel)
 - **Steam link auto-embed** — Listens for `store.steampowered.com/app/` URLs in messages
+- **Sale notifications** — Background service posts to configured channel when watched games go on sale
 
 ## Testing Standards
 
@@ -66,6 +71,14 @@ SteamTrain is a Discord bot for game lookup (via IGDB) and Steam user profiles v
 2. Add cache instances to `src/cache/cacheManager.js` if needed
 3. Create corresponding services in `src/services/`
 4. Wire in `src/index.js`
+
+## Store Layer (Persistence)
+
+- SQLite database lives at `data/watchlist.db` (auto-created, gitignored)
+- Store classes live in `src/store/` and use prepared statements for performance
+- `WatchlistStore` manages per-guild watchlists and notification channel settings
+- Database uses WAL journal mode for better concurrent read performance
+- For new persistent data, add tables in `initDatabase()` and query methods to the store class
 
 ## Error Handling
 
